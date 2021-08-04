@@ -1,0 +1,12 @@
+<odoo>
+    <template id="assets_backend" name="HR Organization Chart assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+          <script src="/hr_organization_chart/static/src/js/hr_organization_chart.js"></script>
+          <script src="/hr_organization_chart/static/src/js/orgchart.js"></script>
+            <script src="/hr_organization_chart/static/src/js/html2canvas.js"></script>
+            <script src="/hr_organization_chart/static/src/js/pdf.js"></script>
+          <link href="/hr_organization_chart/static/src/css/orgchart.css" rel="stylesheet" />
+          <link href="/hr_organization_chart/static/src/css/hr_organization_chart.css" rel="stylesheet" />
+      </xpath>
+    </template>
+</odoo>

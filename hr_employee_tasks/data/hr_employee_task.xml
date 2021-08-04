@@ -1,0 +1,27 @@
+<odoo>
+    <record id="mt_task_created" model="mail.message.subtype">
+        <field name="name">Created</field>
+        <field name="res_model">hr.employee.task</field>
+        <field name="description">Task created and waiting confirmation</field>
+    </record>
+
+    <record id="mt_task_confirmed" model="mail.message.subtype">
+        <field name="name">Opened</field>
+        <field name="res_model">hr.employee.task</field>
+        <field name="default" eval="False"/>
+        <field name="description">Task Confirmed, waiting to be closed</field>
+    </record>
+
+    <record id="mt_task_closed" model="mail.message.subtype">
+        <field name="name">Closed</field>
+        <field name="res_model">hr.employee.task</field>
+        <field name="description">Task closed</field>
+    </record>
+
+    <record id="mt_task_cancelled" model="mail.message.subtype">
+        <field name="name">Cancelled</field>
+        <field name="res_model">hr.employee.task</field>
+        <field name="default" eval="False"/>
+        <field name="description">Task Cancelled</field>
+    </record>
+</odoo>

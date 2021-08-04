@@ -1,0 +1,15 @@
+<odoo>
+    <record id="attendance_sheet_batch_form_view" model="ir.ui.view">
+        <field name="name">attendance.sheet.batch.form.view</field>
+        <field name="model">attendance.sheet.batch</field>
+        <field name="inherit_id" ref="att_sheet_batch.attendance_sheet_batch_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group" position="before">
+                <div class="oe_button_box" name="button_box">
+                    <button class="oe_stat_button" name="action_create_payslip_batch"
+                            string="Payslip Batch" type="object" icon="fa-print" states="done"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

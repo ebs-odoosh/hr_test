@@ -1,0 +1,29 @@
+<odoo>
+  <data>
+      <record id="hr_contract_salary_line_form" model="ir.ui.view">
+          <field name="name">hr.contract.salary.line.form</field>
+          <field name="model">hr.contract.salary.line</field>
+          <field name="arch" type="xml">
+              <form string="salary lines">
+                  <sheet>
+                      <group>
+                          <field name="rule_id"/>
+                          <field name="line_amount"/>
+                      </group>
+                  </sheet>
+              </form>
+          </field>
+      </record>
+
+      <record id="hr_contract_salary_line_tree" model="ir.ui.view">
+          <field name="name">hr.contract.salary.line.tree</field>
+          <field name="model">hr.contract.salary.line</field>
+          <field name="arch" type="xml">
+              <tree string="salary lines">
+                  <field name="rule_id"/>
+                  <field name="line_amount"/>
+              </tree>
+          </field>
+      </record>
+  </data>
+</odoo>

@@ -1,0 +1,16 @@
+<odoo>
+    <data noupdate="1">
+        <record id="hr_employee_manager" model="hr.employee">
+            <field name="name">Manager</field>
+            <field name="department_id" ref="hr_department_research"/>
+            <field name="job_id" ref="hr.job_developer"/>
+        </record>
+
+        <record id="hr_employee_sample_employee" model="hr.employee">
+            <field name="name">Sample Employee #1</field>
+            <field name="department_id" ref="hr_department_research"/>
+            <field name="parent_id" ref="hr_employee_manager"/>
+            <field name="job_id" ref="hr.job_developer"/>
+        </record>
+    </data>
+</odoo>

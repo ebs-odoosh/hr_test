@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_knoz_contract_knoz_contract,knoz_contract.knoz_contract,model_knoz_contract_knoz_contract,,1,0,0,0

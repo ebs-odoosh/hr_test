@@ -1,0 +1,32 @@
+<templates xml:space="preserve">
+    <t t-name="hr_organization_chart.hr_organization_chart_template">
+        <div id="chart-container">
+            <button id="expand" class="o_hr_organization_chart_expand">Expand</button>
+            <button id="collapse" class="o_hr_organization_chart_collapse o_hidden">Collapse</button>
+        </div>
+        <script type="text/javascript">
+            $(function() {
+                <!-- Get Employee Data -->
+                var datascource = employee_data.values;
+                var oc = $('#chart-container').orgchart({
+                  'data' : datascource,
+                  'nodeTemplate': nodeTemplate,
+                  'toggleSiblingsResp': true,
+                  'exportButton': true,
+                  'exportFileextension': 'pdf',
+                  'visibleLevel': 2,
+                });
+                $('#expand').on('click', function (argument) {
+                    oc.init({'visibleLevel': 1000});
+                    $(this).addClass('o_hidden');
+                    $('#collapse').removeClass('o_hidden');
+                });
+                $('#collapse').on('click', function (argument) {
+                    oc.init({'visibleLevel': 2});
+                     $(this).addClass('o_hidden');
+                    $('#expand').removeClass('o_hidden');
+                });
+            });
+        </script>
+    </t>
+</templates>

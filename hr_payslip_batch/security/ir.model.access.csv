@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_payslip_run_sheet_user,access.hr.payslip.run.sheet.user,hr_payroll.model_hr_payslip_run,hr_attendance_sheet.group_attendance_sheet_user,1,1,1,1

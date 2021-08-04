@@ -1,0 +1,130 @@
+<odoo>
+    <record id="hr_employee_task_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.task.view.form</field>
+        <field name="model">hr.employee.task</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+                        <button name="action_confirm"
+                            states="draft" string="Confirm"
+                            type="object" groups="hr.group_hr_manager" class="oe_highlight"/>
+
+                        <button name="action_close"
+                            states="submit" string="Close"
+                            type="object" groups="hr.group_hr_user" class="oe_highlight"/>
+
+                        <button name="action_cancel"
+                            string="Cancel" states="draft,open"
+                            type="object" groups="hr.group_hr_user" class="oe_highlight"/>
+
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <group>
+                        <field name="name" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="employee_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="expiration_date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="user_id" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="total_weight" class="oe_inline" readonly="1"/>
+                        <field name="achieved_weight" class="oe_inline" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="sub_tasks_ids"  attrs="{'readonly': [('state', 'not in', ['draft', 'open'])]}" >
+                            <tree>
+                                <field name="name"/>
+                                <field name="weight"/>
+                                <field name="achieved_weight"/>
+                                <field name="state" invisible="1"/>
+                                <field name="task_state" invisible="1"/>
+
+                                    <button name="action_submit"
+                                string="Submit" states="open"
+                                type="object" icon="fa-sign-in"/>
+
+
+                                    <button name="action_reopen" states="submit"
+                                string="Reopen" groups="hr.group_hr_user"
+                                type="object" icon="fa-refresh"/>
+
+                                    <button name="action_close" states="submit"
+                                 string="Close" groups="hr.group_hr_user"
+                                type="object" icon="fa-check"/>
+
+                            </tree>
+                            <form>
+                                <sheet>
+                                    <header>
+                                        <button name="action_submit"
+                            states="open" string="Submit"
+                            type="object" icon="fa-sign-in"/>
+                                <button name="action_reopen"
+                            states="submit" groups="hr.group_hr_user" string="Reopen"
+                            type="object" icon="fa-refresh"/>
+                                <button name="action_close"
+                            states="submit" string="Close"
+                            type="object" groups="hr.group_hr_user"  icon="fa-check"/>
+                                        <field name="state" widget="statusbar"/>
+                                    </header>
+                                    <group>
+                                         <field name="task_id" invisible="1"/>
+                                        <field name="task_state"  invisible="1"/>
+                                        <field name="name"
+                                               attrs="{'readonly': [('task_state', '!=', 'draft')]}"/>
+                                        <field name="weight" attrs="{'readonly': [('task_state', '!=', 'draft')]}"/>
+
+                                        <field name="achieved_weight"
+                                               attrs="{'readonly': [('state', '=', 'closed')]}"/>
+                                        <field name="employee_comments"
+                                               attrs="{'readonly': [('state', '!=', 'open')]}"/>
+
+                                        <field name="description"
+                                               attrs="{'readonly': [('task_state', '!=', 'draft')]}"/>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+                    <group>
+                        <field name="description" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_employee_task_view_tree" model="ir.ui.view">
+        <field name="name">hr.employee.task.view.tree</field>
+        <field name="model">hr.employee.task</field>
+        <field name="arch" type="xml">
+            <tree decoration-muted="state=='closed' or state=='cancel'">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="expiration_date"/>
+                <field name="total_weight"/>
+                <field name="achieved_weight" />
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_hr_employee_task" model="ir.actions.act_window">
+        <field name="name">Employee Tasks</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee.task</field>
+        <field name="view_mode">tree,form,pivot</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Add New Employee Task
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="hr_employee_task_menu" name="Employee Tasks"
+              parent="hr.menu_hr_root" action="action_hr_employee_task" sequence="3"/>
+</odoo>

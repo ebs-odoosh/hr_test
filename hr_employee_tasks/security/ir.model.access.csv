@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_employee_task_officer, access.hr.employee.task.officer,hr_employee_tasks.model_hr_employee_task,hr.group_hr_user,1,1,1,1
+access_hr_employee_sub_task_officer, access.hr.employee.task.sub.officer,hr_employee_tasks.model_hr_employee_sub_task,hr.group_hr_user,1,1,1,1
+
+access_hr_employee_task_employee, access.hr.employee.task.employee,model_hr_employee_task,base.group_user,1,1,0,0
+access_hr_employee_sub_task_employee, access.hr.employee.task.sub.employee,model_hr_employee_sub_task,base.group_user,1,1,0,0

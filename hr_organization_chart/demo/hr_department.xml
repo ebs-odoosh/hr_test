@@ -1,0 +1,11 @@
+<odoo>
+    <data noupdate="1">
+        <record id="hr_department_management" model="hr.department">
+            <field name="name">Management</field>
+        </record>
+        <record id="hr_department_research" model="hr.department">
+            <field name="name">Research</field>
+            <field name="parent_id" ref="hr_department_management"/>
+        </record>
+    </data>
+</odoo>

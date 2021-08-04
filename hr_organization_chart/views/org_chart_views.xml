@@ -1,0 +1,13 @@
+<odoo>
+  <record id="hr_organization_chart_action" model="ir.actions.client">
+      <field name="name">Organization Chart</field>
+      <field name="tag">hr_organization_chart.org_chart_department</field>
+  </record>
+
+  <menuitem id="hr_organization_chart_menu"
+    name="Organization Chart"
+    action="hr_organization_chart_action"
+    parent="hr.menu_hr_root"
+    sequence="2"/>
+
+</odoo>

@@ -1,0 +1,225 @@
+<odoo>
+    <data>
+
+        <record id="biometric_record_form_view" model="ir.ui.view">
+            <field name="name">biometric.record.form_.view</field>
+            <field name="model">biometric.record</field>
+            <field name="arch" type="xml">
+                <form string="">
+
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="success,failed"
+                               statusbar_colors="{'failed':'red','success':'green'}"/>
+                    </header>
+
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+
+                        </group>
+                        <field name="note"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="biometric_record_tree_view" model="ir.ui.view">
+            <field name="name">biometric.record.tree.view</field>
+            <field name="model">biometric.record</field>
+            <field name="arch" type="xml">
+                <tree>
+
+                    <field name="name"/>
+                    <field name="state"/>
+                    <field name="note"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_vie_biometric_record" model="ir.actions.act_window">
+            <field name="name">Biometric Records</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">biometric.record</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+
+        <record id="biometric_log_form_view" model="ir.ui.view">
+            <field name="name">biometric.log.form_.view</field>
+            <field name="model">biometric.log</field>
+            <field name="arch" type="xml">
+                <form string="">
+
+                    <sheet>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="name"/>
+                            <field name="type"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="biometric_log_tree_view" model="ir.ui.view">
+            <field name="name">biometric.log.tree.view</field>
+            <field name="model">biometric.log</field>
+            <field name="arch" type="xml">
+
+                <!--<tree create="false" duplicate="false" edit="false" delete="false">-->
+                <tree>
+                    <field name="employee_id"/>
+                    <field name="name"/>
+                    <field name="machine"/>
+                    <field name="type"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_view_biometric_log" model="ir.actions.act_window">
+            <field name="name">Biometric Logs</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">biometric.log</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+
+        <record id="view_employee_form_bio_inherit" model="ir.ui.view">
+            <field name="name">view.employee.form.bio.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='user_id']" position="after">
+
+                    <field name="att_user_id"/>
+
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_biometric_machine_form" model="ir.ui.view">
+            <field name="name">view.biometric.machine.form</field>
+            <field name="model">biometric.machine</field>
+            <field name="arch" type="xml">
+                <form string="">
+
+                    <header>
+                        <!-- <button name="download_attendance" string="Get Attendances" class="oe_highlight"
+                                 type="object" states="active"/>-->
+                        <field name="state" widget="statusbar" clickable="1"/>
+
+                    </header>
+                    <sheet>
+                        <div class="oe_left">
+                            <h1>
+                                <field name="name" required="1" placeholder="Machine Name"/>
+                            </h1>
+                        </div>
+                        <div class="oe_right oe_button_box">
+                            <button name="clear_attendance" string="Clear" class="oe_stat_button" icon="fa-remove "
+                                    confirm="Are you sure you want to do this?" type="object"
+                                    groups="hr_attendance.group_hr_attendance_manager"/>
+                            <button name="download_attendance" string="Download" class="oe_stat_button"
+                                    icon="fa-download " type="object" confirm="Are you sure you want to do this?"
+                                    groups="hr_attendance.group_hr_attendance_manager"/>
+
+                             <button name="download_from_log" string="Download from log" class="oe_stat_button"
+                                    icon="fa-download " type="object" confirm="Are you sure you want to do this?"
+                                    groups="hr_attendance.group_hr_attendance_manager"/>
+                        </div>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <group col="4" colspan="4">
+                            <field name="ip_address" required="1"/>
+                            <field name="port" required="1"/>
+                            <field name="timezone" required="1"/>
+                            <field name="last_connected_time" readonly="1"/>
+                            <!--<field name="address_id"/>-->
+                            <!--<field name="company_id"/>-->
+                        </group>
+                        <group>
+                            <label for="interval_min"/>
+                            <div>
+                                <field name="time_interval_min" class="oe_inline"
+                                       required="True"/>
+                                <field name="interval_min" class="oe_inline"
+                                       required="True"/>
+                            </div>
+                            <label for="interval_max"/>
+                            <div>
+                                <field name="time_interval_max" class="oe_inline"
+                                       required="True"/>
+                                <field name="interval_max" class="oe_inline"
+                                       required="True"/>
+                            </div>
+                        </group>
+                        <group string="Download Logs">
+                            <field name="log_ids" nolabel="1" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_biometric_machine_tree" model="ir.ui.view">
+            <field name="name">biometric.machine.tree</field>
+            <field name="model">biometric.machine</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Biometric Machine" decoration-danger="last_connected_days > 0">
+                    <field name="name"/>
+                    <field name="ip_address"/>
+                    <field name="last_connected_days" invisible="True"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="action_biometric_machine_view" model="ir.actions.act_window">
+            <field name="name">Biometric Machines</field>
+            <field name="res_model">biometric.machine</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!--<menuitem id="menu_biometric_attendance_root" name="Biometric Attendances" sequence="95" groups="hr_attendance.group_hr_attendance_manager"-->
+        <!--web_icon="hr_biometric_attendance,static/description/icon.png"/>-->
+        <menuitem id="menu_biometric_attendance" name="Biometric Attendances"
+                  parent="hr_attendance.menu_hr_attendance_root" sequence="60"
+                  groups="hr_attendance.group_hr_attendance_manager"/>
+
+
+        <menuitem id="menu_action_biometric_machine" name="Biometric Machines" parent="menu_biometric_attendance"
+                  sequence="10" groups="hr_attendance.group_hr_attendance_manager"
+                  action="action_biometric_machine_view"/>
+
+        <menuitem id="biometric_record_menu" parent="menu_biometric_attendance" name="Biometric Records"
+                  action="action_vie_biometric_record" sequence="30" groups="base.group_system"/>
+
+
+
+         <menuitem id="biometric_log_menu" parent="menu_biometric_attendance" name="Biometric Logs"
+                  action="action_view_biometric_log" sequence="50" groups="base.group_no_one"/>
+
+    </data>
+</odoo>

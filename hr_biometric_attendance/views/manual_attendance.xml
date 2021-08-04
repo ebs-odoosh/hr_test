@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <record id="view_manual_attendance_form" model="ir.ui.view">
+            <field name="name">manual.attendance.form</field>
+            <field name="model">manual.attendance</field>
+            <field name="arch" type="xml">
+                <form create="false" duplicate="false" edit="false" delete="false">
+                    <sheet>
+                        <group>
+                            <field name="employee_id" readonly="True"/>
+                            <field name="attendance_time"/>
+                            <field name="type"/>
+                            <field name="create_uid" readonly="True"/>
+                            <field name="write_uid" readonly="True"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_manual_attendance_tree" model="ir.ui.view">
+            <field name="name">manual.attendance.tree</field>
+            <field name="model">manual.attendance</field>
+            <field name="arch" type="xml">
+                <tree create="false" duplicate="false" edit="false" delete="true">
+                    <field name="employee_id"/>
+                    <field name="attendance_time"/>
+                    <field name="type"/>
+                </tree>
+            </field>
+        </record>
+        
+        
+        <record id="view_manual_attendance_action" model="ir.actions.act_window">
+            <field name="name">Manual Attendance</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">manual.attendance</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        
+        <menuitem id="menuitem_manual_attendance" name="Manual Attendance" parent="menu_biometric_attendance" action="view_manual_attendance_action" sequence="100" groups="base.group_no_one"/>
+    
+    </data>
+</odoo>

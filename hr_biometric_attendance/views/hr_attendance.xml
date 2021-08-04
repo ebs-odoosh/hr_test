@@ -1,0 +1,58 @@
+<odoo>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_attendance_tree_biometric" model="ir.ui.view">
+            <field name="name">hr.attendance.tree.biometric</field>
+            <field name="model">hr.attendance</field>
+            <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+            <field name="arch" type="xml">
+
+
+                <xpath expr="//field[@name='employee_id']" position="after">
+                    <field name="state" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//tree" position="attributes">
+                    <!--<attribute name="create">0</attribute>-->
+                    <!--<attribute name="delete">0</attribute>-->
+                    <attribute name="decoration-danger">state == 'fix'</attribute>
+                </xpath>
+                <xpath expr="//field[@name='check_in']" position="after">
+                    <field name="check_in_machine_id" readonly="True"/>
+                </xpath>
+                <xpath expr="//field[@name='check_out']" position="after">
+                    <field name="check_out_machine_id" readonly="True"/>
+                </xpath>
+
+            </field>
+        </record>
+
+
+        <record id="hr_attendance_form_view_biometric" model="ir.ui.view">
+            <field name="name">hr.attendance.form.view.biometric</field>
+            <field name="model">hr.attendance</field>
+            <field name="inherit_id" ref="hr_attendance.hr_attendance_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/*" position="before">
+                    <header>
+                        <button string="Set as Fixed" name="fix_register"
+                                type="object" states="fix" class="oe_highlight"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="right,fix"
+                               statusbar_colors='{"fix":"red"}'/>
+                    </header>
+                </xpath>
+                <xpath expr="//field[@name='check_in']" position="after">
+                    <field name="check_in_machine_id" readonly="True"/>
+                </xpath>
+                <xpath expr="//field[@name='check_out']" position="after">
+                    <field name="check_out_machine_id" readonly="True"/>
+                </xpath>
+                <!--<xpath expr="//form" position="attributes">-->
+                <!--<attribute name="create">0</attribute>-->
+                <!--<attribute name="delete">0</attribute>-->
+                <!--</xpath>-->
+            </field>
+        </record>
+    </data>
+</odoo>

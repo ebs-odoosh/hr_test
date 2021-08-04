@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+hr_department_user,hr.department.user,hr.model_hr_department,hr.group_hr_user,1,0,0,0
+access_hr_department_manager,hr.department.manager,hr.model_hr_department,hr.group_hr_manager,1,1,1,1
+hr_attendance.access_hr_attendance_system_user,hr.attendance.system.user,hr_attendance.model_hr_attendance,base.group_user,1,0,0,0

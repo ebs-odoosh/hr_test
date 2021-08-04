@@ -1,0 +1,25 @@
+<odoo>
+    <record id="hr_leave_allocation_view_form" model="ir.ui.view">
+        <field name="name">hr.leave.allocation.view.form</field>
+        <field name="model">hr.leave.allocation</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_allocation_view_form"/>
+        <field name="priority">32</field>
+        <field name="arch" type="xml">
+            <group name="alloc_right_col" position="after">
+                <group>
+                    <field name="is_permission" invisible="1"/>
+                    <field name="allocation_date_from" attrs='{
+                     "invisible": [("is_permission", "=", False)],
+                      "required": [("is_permission", "=", True)],
+                     "readonly": [("state", "not in", ["draft", "confirm"])]
+                     }'/>
+                    <field name="allocation_date_to" attrs='{
+                    "invisible": [("is_permission", "=", False)],
+                    "required": [("is_permission", "=", True)],
+
+                     "readonly": [("state", "not in", ["draft", "confirm"])]}'/>
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,26 @@
+<odoo>
+  <data>
+
+      <record model="ir.ui.view" id="hr_contract_inherit_form_view">
+          <field name="name">hr.contract.form.view</field>
+          <field name="model">hr.contract</field>
+          <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+          <field name="arch" type="xml">
+              <xpath expr='//group[@name="salary_and_advantages"]'  position="before">
+                  <page name="salary_info" string="Salary Information" groups="hr.group_hr_user">
+                      <group string="Salary Details"  class="o_row" >
+                          <field name="salary_line_ids" nolabel="1">
+                              <tree editable="bottom">
+                                  <field name="rule_id"/>
+                                  <field name="line_amount"/>
+                              </tree>
+                          </field>
+                      </group>
+                      <br/>
+                  </page>
+              </xpath>
+          </field>
+      </record>
+
+  </data>
+</odoo>

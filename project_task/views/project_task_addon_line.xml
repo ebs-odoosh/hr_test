@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+<!--  ==========================  inherit_project.task_addon_line_ids =============================================================================-->
+        <record id="project_management_view_task_form2" model="ir.ui.view">
+            <field name="name">project management</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="task_module" widget="selection"/>
+            </xpath>
+            <xpath expr="//page[@name='extra_info']" position="after">
+                <page string="Addons">
+                    <field name="addon_line_ids" nolabel="1" widget="one2many_list" mode="tree,kanban">
+                        <tree string="Addons line" editable="bottom">
+                            <field name="name"/>
+                            <field name="addon_tec" />
+                            <field name="addon_ver"/>
+                            <field name="addon_disc"/>
+                            <field name="addon_tester" />
+                            <field name="addon_developer" />
+                            <field name="addon_link" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+
