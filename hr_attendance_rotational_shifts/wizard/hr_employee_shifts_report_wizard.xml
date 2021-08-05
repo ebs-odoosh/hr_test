@@ -1,0 +1,29 @@
+<odoo>
+    <record id="hr_employee_shifts_report_wizard_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.shifts.report.wizard.view.form</field>
+        <field name="model">hr.employee.shifts.report.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group col="4" colspan="6">
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                </group>
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_employee_shifts_report_wizard_action" model="ir.actions.act_window">
+        <field name="name">Shifts Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee.shifts.report.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="hr.model_hr_employee" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

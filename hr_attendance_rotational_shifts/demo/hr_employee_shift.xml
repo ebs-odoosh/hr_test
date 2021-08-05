@@ -1,0 +1,13 @@
+<odoo>
+   <record id="hr_employee_shift_demo_1" model="hr.employee.shift">
+       <field name="name">Morning Shift</field>
+       <field name="time_from">9</field>
+       <field name="time_to">17</field>
+   </record>
+
+   <record id="hr_employee_shift_demo_2" model="hr.employee.shift">
+       <field name="name">Night Shift</field>
+       <field name="time_from">17</field>
+       <field name="time_to">02</field>
+   </record>
+</odoo>

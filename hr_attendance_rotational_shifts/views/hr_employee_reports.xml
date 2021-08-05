@@ -1,0 +1,27 @@
+<odoo>
+    <record id="hr_employees_shifts_report_paperformat" model="report.paperformat">
+        <field name="name">Employees Shifts Report</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">297</field>
+        <field name="page_width">210</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">30</field>
+        <field name="margin_bottom">23</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">30</field>
+        <field name="footer_spacing">25</field>
+        <field name="dpi">90</field>
+    </record>
+    <report
+        id="report_hr_employee_shifts_action"
+        string="Employees Shifts Report"
+        model="hr.employee"
+        report_type="qweb-pdf"
+        name="hr_attendance_rotational_shifts.report_employee_shifts"
+        file="hr_attendance_rotational_shifts.report_employee_shifts"
+        paperformat="hr_attendance_rotational_shifts.hr_employees_shifts_report_paperformat"
+        menu="False"/>
+</odoo>

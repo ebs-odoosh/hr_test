@@ -1,0 +1,48 @@
+<odoo>
+    <template id="report_employee_shifts">
+        <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+                <style type="text/css">
+   table { page-break-inside:auto }
+   tr    { page-break-inside:avoid; page-break-after:auto }
+   table, th, td {
+             border: 1px solid black !important;
+}
+</style>
+
+                <div class="page">
+                    <div style="text-align: center;">
+                        <h3 class="mb32">Employees Shifts Report</h3>
+                        <h3><span t-esc="dates[0]"/> TO <span t-esc="dates[1]"/></h3>
+                    </div>
+                    <t t-foreach="get_shifts" t-as="shifts_data">
+                        <table class="table table-bordered mb32"
+                               style="table-layout:auto">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2"><span t-esc="shifts_data['emp']"/></th>
+                                    <th  colspan="2">
+                                            Shift
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>From</th>
+                                    <th>To</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="shifts_data['shifts']" t-as="shift">
+                                    <tr>
+                                            <td></td>
+                                            <td><span t-esc="shift[0]"/></td>
+                                            <td><span t-esc="shift[1]"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                 </t>
+                </div>
+        </t>
+        </t>
+    </template>
+</odoo>

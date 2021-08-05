@@ -1,0 +1,8 @@
+.page .report_table table {
+    border:solid #000 !important;
+    border-width:1px 0 0 1px !important;
+}
+.page .report_table th, .report_table td {
+    border:solid #000 !important;
+    border-width:0 1px 1px 0 !important;
+}

@@ -1,0 +1,48 @@
+<odoo>
+    <record id="hr_employee_shift_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.shift.view.form</field>
+        <field name="model">hr.employee.shift</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="time_from" widget="float_time"/>
+                        <field name="time_to" widget="float_time"/>
+                        <field name="flexible_hours" widget="float_time"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_employee_shift_view_tree" model="ir.ui.view">
+        <field name="name">hr.employee.shift.view.tree</field>
+        <field name="model">hr.employee.shift</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="time_from" widget="float_time"/>
+                <field name="time_to" widget="float_time"/>
+                <field name="flexible_hours" widget="float_time"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_employee_shift_action" model="ir.actions.act_window">
+        <field name="name">Employees Shifts</field>
+        <field name="res_model">hr.employee.shift</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+             Add New Shift
+          </p><p>
+            Create Rotational Shifts For Employees
+          </p>
+        </field>
+    </record>
+
+    <menuitem id="hr_employee_shift_menu" name="Employees Shifts"
+              parent="hr_attendance.menu_hr_attendance_settings"
+              action="hr_employee_shift_action" sequence="1"/>
+</odoo>

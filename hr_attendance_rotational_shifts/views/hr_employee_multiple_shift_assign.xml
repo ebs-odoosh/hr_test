@@ -1,0 +1,71 @@
+<odoo>
+    <record id="hr_employee_multiple_shift_assign_view_tree" model="ir.ui.view">
+        <field name="name">hr.employee.multiple.shift.assign.view.tree</field>
+        <field name="model">hr.employee.multiple.shift.assign</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_employee_multiple_shift_assign_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.multiple.shift.assign.view.form</field>
+        <field name="model">hr.employee.multiple.shift.assign</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+                        <button string="Confirm" type="object" name="action_confirm_shift_assign" states="draft"
+                                class="oe_highlight" groups="hr.group_hr_manager"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <group>
+                        <field name="name" attrs="{'readonly':[('state','=','confirmed')]}" 
+                               required="1"></field>
+                    </group>
+                    <group>
+                        <field name="department_ids" widget="many2many_tags"
+                        attrs="{'readonly':[('state','=','confirmed')]}"/>
+                        <field name="category_ids" widget="many2many_tags"
+                        attrs="{'readonly':[('state','=','confirmed')]}"/>
+                    </group>
+                    <group>
+                       <field name="assign_line_ids"
+                               attrs="{'readonly':[('state','=','confirmed')]}">
+                            <tree editable="top">
+                                <field name="employee_id"
+                                       required="1"/>
+                                <field name="shift_id" required="1"/>
+                                <field name="time_from" readonly="1"
+                                   widget="float_time"/>
+                                <field name="time_to" readonly="1"
+                                   widget="float_time"/>
+                                <field name="date_from" required="1"/>
+                                <field name="date_to" required="1"/>
+                                <field name="dates_diff" invisible="1"/>
+                                <field name="weekend_ids" widget="many2many_tags"
+                                        attrs="{'invisible': [('dates_diff', '&lt;', 2)]}" options="{'no_create_edit': True}"/>
+                            </tree>
+                    </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_employee_multiple_shift_assign_action" model="ir.actions.act_window">
+        <field name="name">Employees Multiple Shift Assigning</field>
+        <field name="res_model">hr.employee.multiple.shift.assign</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+              Assign Multiple Shifts For Employees
+          </p>
+        </field>
+    </record>
+
+    <menuitem id="hr_employee_multiple_shift_assign_menu" name="Multiple Shifts Assign"
+              parent="hr_attendance.menu_hr_attendance_settings"
+              action="hr_employee_multiple_shift_assign_action" sequence="3"/>
+</odoo>

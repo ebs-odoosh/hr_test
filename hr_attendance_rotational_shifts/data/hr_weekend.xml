@@ -1,0 +1,36 @@
+<odoo noupdate="1">
+    <record id="monday" model="hr.weekend">
+        <field name="name">Monday</field>
+        <field name="code">0</field>
+    </record>
+
+    <record id="tuesday" model="hr.weekend">
+        <field name="name">Tuesday</field>
+        <field name="code">1</field>
+    </record>
+
+    <record id="wednesday" model="hr.weekend">
+        <field name="name">Wednesday</field>
+        <field name="code">2</field>
+    </record>
+
+    <record id="thursday" model="hr.weekend">
+        <field name="name">Thursday</field>
+        <field name="code">3</field>
+    </record>
+
+    <record id="friday" model="hr.weekend">
+        <field name="name">Friday</field>
+        <field name="code">4</field>
+    </record>
+
+    <record id="saturday" model="hr.weekend">
+        <field name="name">Saturday</field>
+        <field name="code">5</field>
+    </record>
+
+    <record id="sunday" model="hr.weekend">
+        <field name="name">Sunday</field>
+        <field name="code">6</field>
+    </record>
+</odoo>

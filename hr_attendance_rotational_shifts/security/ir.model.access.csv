@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_employee_shift_user,access.hr.employee.shift.user,model_hr_employee_shift,hr_attendance_sheet.group_attendance_sheet_user,1,1,1,1
+
+access_hr_employee_single_shift_assign_user,access.hr.employee.single.shift.assign.user,model_hr_employee_single_shift_assign,hr_attendance_sheet.group_attendance_sheet_user,1,1,1,1
+access_hr_employee_multiple_shift_assign_user,access.hr.employee.multiple.shift.assign.user,model_hr_employee_multiple_shift_assign,hr_attendance_sheet.group_attendance_sheet_user,1,1,1,1
+access_hr_employee_multiple_shift_assign_line_user,access.hr.employee.multiple.shift.assign.line.user,model_hr_employee_multiple_shift_assign_line,hr_attendance_sheet.group_attendance_sheet_user,1,1,1,1
+
+access_hr_employee_shift_schedule_user,access.hr.employee.shift.schedule.user,model_hr_employee_shift_schedule,hr_attendance_sheet.group_attendance_sheet_user,1,1,1,1
+access_hr_employee_shift_schedule_user,access.hr.employee.shift.schedule.user,model_hr_employee_shift_schedule,base.group_user,1,0,0,0
+access_hr_weekend_user,access.hr.weekend.user,model_hr_weekend,hr_attendance_sheet.group_attendance_sheet_user,1,1,1,1

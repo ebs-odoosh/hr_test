@@ -1,0 +1,8 @@
+<odoo>
+    <template id="assets_backend" name="HR Organization Chart assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link href="/hr_attendance_rotational_shifts/static/src/css/shifts_report.css"
+                  rel="stylesheet" />
+      </xpath>
+    </template>
+</odoo>
